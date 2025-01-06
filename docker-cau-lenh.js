@@ -11,6 +11,7 @@
  * - chạy container
  * docker run -d -p 3070:3069 --name ten_container tên_image
  * docker run -d -p 3070:3069 --name cons-be-aligo-media img-aligo_media
+ *
  * 
  * 
  * - lấy địa chỉ IP của 1 container
