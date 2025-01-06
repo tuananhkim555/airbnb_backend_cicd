@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  phone     String?
+  birthday  String?
+  gender    Gender?
+  role       Role?     @default(USER)
+  avatar   String?
+  comments Comment[]
+  bookings Booking[]
+  status    Int       @default(1)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime? @updatedAt
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  roomId    Int      @map("maPhong")
+  userId    Int      @map("maNguoiBinhLuan")
+  content   String   @map("noiDung")
+  rating    Int      @map("saoBinhLuan")
+  createdAt DateTime @default(now()) @map("ngayBinhLuan")
+  updatedAt DateTime? @updatedAt
+  
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  room      Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  @@map("Comment")
+}
+
+model Room {
+  id          Int       @id @default(autoincrement())
+  name        String    @map("tenPhong")
+  guestCount  Int       @default(1) @map("khach")
+  bedroom     Int       @default(1) @map("phongNgu")
+  bed         Int       @default(1) @map("giuong")
+  bathroom    Int       @default(1) @map("phongTam")
+  description String?   @map("moTa")
+  price       Float     @default(0) @map("giaTien")
+  washer      Boolean   @default(false) @map("mayGiat")
+  iron        Boolean   @default(false) @map("banLa")
+  tv          Boolean   @default(false) @map("tivi")
+  airCon      Boolean   @default(false) @map("dieuHoa")
+  wifi        Boolean   @default(false) @map("wifi")
+  kitchen     Boolean   @default(false) @map("bep")
+  parking     Boolean   @default(false) @map("doXe")
+  pool        Boolean   @default(false) @map("hoBoi")
+  flatIron    Boolean   @default(false) @map("banUi")
+  locationId  Int       @default(1) @map("maViTri")
+  image       String?   @map("hinhAnh")
+  comments    Comment[]
+  bookings    Booking[]
+  status      Int       @default(1)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime? @updatedAt
+
+  location    Location  @relation(fields: [locationId], references: [id], onDelete: Cascade)
+
+  @@map("Room")
+}
+
+model Booking {
+  id            Int      @id @default(autoincrement())
+  roomId        Int      @map("maPhong")
+  checkIn       DateTime @map("ngayDen")
+  checkOut      DateTime @map("ngayDi")
+  guestCount    Int      @map("soLuongKhach")
+  userId        Int      @map("maNguoiDung")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime? @updatedAt
+
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  room          Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)
+
+  @@map("Booking")
+}
+
+model Location {
+  id        Int      @id @default(autoincrement())
+  name_location      String   @map("tenViTri")
+  province  String   @map("tinhThanh")
+  country   String   @map("quocGia")
+  image     String   @map("hinhAnh")
+  rooms     Room[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime? @updatedAt
+
+  @@map("Location")
+}
+
