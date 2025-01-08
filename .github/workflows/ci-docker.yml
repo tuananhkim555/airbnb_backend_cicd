@@ -17,7 +17,7 @@ jobs:
             - name: Đăng nhập docker
               run: docker login -u tuananhkim -p ${{secrets.PASS_DOCKER}}
 
-            - name: build 
+            - name: build
               run: docker build . -t tuananhkim/airbnb_backend:latest
 
             - name: push image lên docker hub

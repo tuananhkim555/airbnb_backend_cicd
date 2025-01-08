@@ -5,7 +5,7 @@ services:
     image: tuananhkim/airbnb_backend:latest
     container_name: cons-be-airbnb-backend
     ports:
-      - "3070:3069"
+      - "3000:3000"
     depends_on:
       - mysql-compose
     environment:
@@ -15,6 +15,8 @@ services:
       - REFRESH_TOKEN_SECRET=${REFRESH_TOKEN_SECRET}
       - REFRESH_TOKEN_EXPIRES=${REFRESH_TOKEN_EXPIRES}
     command: ["npm", "run", "start"]
+    networks:
+      - app-networks
   
   mysql-compose:
     image: mysql
@@ -23,3 +25,7 @@ services:
       - MYSQL_ROOT_PASSWORD=1234
     ports:
       - "3307:3306"
+    networks:
+      - app-networks
+networks:
+  app-networks:
