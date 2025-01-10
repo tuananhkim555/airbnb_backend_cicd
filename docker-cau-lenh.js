@@ -13,7 +13,7 @@
  * docker run -d -p 3070:3069 --name cons-be-aligo-media img-aligo_media
  *
  * 
- * 
+ *
  * - lấy địa chỉ IP của 1 container
  * docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' id_name_container
  *
