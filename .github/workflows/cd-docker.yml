@@ -9,7 +9,7 @@ on:
             - completed
 
 
-# chạy công việc gì
+# chạy công việc gìairbnb_backend
 jobs:
     build:
         runs-on: airbnb_backend
