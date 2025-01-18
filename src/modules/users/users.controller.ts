@@ -39,7 +39,7 @@ interface RequestWithUser extends ExpressRequest {
 }
 
 @Controller('/api/users')
-@UseGuards(JwtAuthGuard)
+//@UseGuards(JwtAuthGuard)
 @ApiBearerAuth('JWT-auth')
 export class UsersController {
   constructor(private userService: UsersService) {}
