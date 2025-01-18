@@ -9,7 +9,7 @@ import { Public } from 'src/common/decorater/public.decorator';
 
 @ApiTags('Comment')
 @Controller('/api/comment')
-@UseGuards(JwtAuthGuard)
+//@UseGuards(JwtAuthGuard)
 @ApiBearerAuth('JWT-auth')
 export class CommentController {
   constructor(
