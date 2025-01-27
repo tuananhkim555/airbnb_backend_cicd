@@ -168,7 +168,6 @@ __decorate([
 ], UsersController.prototype, "uploadAvatarCloud", null);
 exports.UsersController = UsersController = __decorate([
     (0, common_1.Controller)('/api/users'),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, swagger_1.ApiBearerAuth)('JWT-auth'),
     __metadata("design:paramtypes", [users_service_1.UsersService])
 ], UsersController);

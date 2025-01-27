@@ -20,11 +20,14 @@ export declare class RoomsController {
         items: {
             id: number;
             name: string;
+            status: number;
+            createdAt: Date;
+            updatedAt: Date | null;
+            description: string | null;
             guestCount: number;
             bedroom: number;
             bed: number;
             bathroom: number;
-            description: string | null;
             price: number;
             washer: boolean;
             iron: boolean;
@@ -37,9 +40,6 @@ export declare class RoomsController {
             flatIron: boolean;
             locationId: number;
             image: string | null;
-            status: number;
-            createdAt: Date;
-            updatedAt: Date | null;
         }[];
         message?: undefined;
     }>;
@@ -53,11 +53,14 @@ export declare class RoomsController {
         data: {
             id: number;
             name: string;
+            status: number;
+            createdAt: Date;
+            updatedAt: Date | null;
+            description: string | null;
             guestCount: number;
             bedroom: number;
             bed: number;
             bathroom: number;
-            description: string | null;
             price: number;
             washer: boolean;
             iron: boolean;
@@ -70,9 +73,6 @@ export declare class RoomsController {
             flatIron: boolean;
             locationId: number;
             image: string | null;
-            status: number;
-            createdAt: Date;
-            updatedAt: Date | null;
         };
     }>;
     getRoomByLocationId(id: number): Promise<{
@@ -85,11 +85,14 @@ export declare class RoomsController {
         data: {
             id: number;
             name: string;
+            status: number;
+            createdAt: Date;
+            updatedAt: Date | null;
+            description: string | null;
             guestCount: number;
             bedroom: number;
             bed: number;
             bathroom: number;
-            description: string | null;
             price: number;
             washer: boolean;
             iron: boolean;
@@ -102,18 +105,12 @@ export declare class RoomsController {
             flatIron: boolean;
             locationId: number;
             image: string | null;
-            status: number;
-            createdAt: Date;
-            updatedAt: Date | null;
         }[];
     }>;
     searchPaginationRooms(query: RoomFilterDto): Promise<{
         data: {
             id: number;
             name: string;
-            status: number;
-            createdAt: Date;
-            updatedAt: Date | null;
             email: string;
             password: string;
             phone: string | null;
@@ -121,6 +118,9 @@ export declare class RoomsController {
             gender: import(".prisma/client").$Enums.Gender | null;
             role: import(".prisma/client").$Enums.Role | null;
             avatar: string | null;
+            status: number;
+            createdAt: Date;
+            updatedAt: Date | null;
         }[];
         total: number;
         currentPage: number;
@@ -136,11 +136,14 @@ export declare class RoomsController {
         data: {
             id: number;
             name: string;
+            status: number;
+            createdAt: Date;
+            updatedAt: Date | null;
+            description: string | null;
             guestCount: number;
             bedroom: number;
             bed: number;
             bathroom: number;
-            description: string | null;
             price: number;
             washer: boolean;
             iron: boolean;
@@ -153,9 +156,6 @@ export declare class RoomsController {
             flatIron: boolean;
             locationId: number;
             image: string | null;
-            status: number;
-            createdAt: Date;
-            updatedAt: Date | null;
         }[];
     }>;
     updateRoom(id: number, body: RoomDto): Promise<{
@@ -168,11 +168,14 @@ export declare class RoomsController {
         data: {
             id: number;
             name: string;
+            status: number;
+            createdAt: Date;
+            updatedAt: Date | null;
+            description: string | null;
             guestCount: number;
             bedroom: number;
             bed: number;
             bathroom: number;
-            description: string | null;
             price: number;
             washer: boolean;
             iron: boolean;
@@ -185,9 +188,6 @@ export declare class RoomsController {
             flatIron: boolean;
             locationId: number;
             image: string | null;
-            status: number;
-            createdAt: Date;
-            updatedAt: Date | null;
         };
     }>;
     deleteRoom(id: number): Promise<{
@@ -200,11 +200,14 @@ export declare class RoomsController {
         data: {
             id: number;
             name: string;
+            status: number;
+            createdAt: Date;
+            updatedAt: Date | null;
+            description: string | null;
             guestCount: number;
             bedroom: number;
             bed: number;
             bathroom: number;
-            description: string | null;
             price: number;
             washer: boolean;
             iron: boolean;
@@ -217,16 +220,13 @@ export declare class RoomsController {
             flatIron: boolean;
             locationId: number;
             image: string | null;
-            status: number;
-            createdAt: Date;
-            updatedAt: Date | null;
         };
     }>;
     uploadAvatarCloud(file: Express.Multer.File, roomId: string): Promise<{
         id: number;
-        image: string;
         createdAt: Date;
         updatedAt: Date | null;
+        image: string;
         name_location: string;
         province: string;
         country: string;

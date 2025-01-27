@@ -18,8 +18,6 @@ const comment_service_1 = require("./comment.service");
 const comment_dto_1 = require("./dto/comment.dto");
 const prisma_service_1 = require("../../common/prisma/prisma.service");
 const swagger_1 = require("@nestjs/swagger");
-const common_2 = require("@nestjs/common");
-const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 const public_decorator_1 = require("../../common/decorater/public.decorator");
 let CommentController = class CommentController {
     constructor(commentService, prisma) {
@@ -110,7 +108,6 @@ __decorate([
 exports.CommentController = CommentController = __decorate([
     (0, swagger_1.ApiTags)('Comment'),
     (0, common_1.Controller)('/api/comment'),
-    (0, common_2.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, swagger_1.ApiBearerAuth)('JWT-auth'),
     __metadata("design:paramtypes", [comment_service_1.CommentService,
         prisma_service_1.PrismaService])
